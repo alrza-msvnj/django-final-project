@@ -4,12 +4,12 @@
     <h2 class="text-center">{{ user.username }}</h2>
 
     {% if request.user.id == user.id %}
-        <a href="{% url 'home:create' %}" class="btn btn-primary">Create</a>
+        <a href="{% url 'home:create' %}" class="btn btn-primary">Create Post</a>
     {% endif %}
 
-    {% if request.user.id != user.id and is_following == 0 %}
+    {% if request.user.id != user.id and not is_following %}
         <a class="btn btn-primary" href="{% url 'account:follow' user.id %}">Follow<a/>
-    {% else %}
+    {% elif request.user.id != user.id and is_following %}
         <a class="btn btn-primary" href="{% url 'account:unfollow' user.id %}">Unfollow<a/>
     {% endif %}
 

@@ -6,6 +6,6 @@
     <form action="" method="post" class="col-md-3" novalidate>
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="Login">
+        <input type="submit" class="btn btn-light" value="Login"> <a href="{% url 'account:password_reset' %}" class="btn btn-light" role="button">Forgot password?</a>
     </form>
 {% endblock %}

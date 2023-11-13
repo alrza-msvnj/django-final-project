@@ -97,7 +97,7 @@ class UserFollowView(LoginRequiredMixin, View):
         if relation.exists():
             messages.error(request, 'You are already following this user!', 'danger')
         else:
-            Relation(from_user=request.user, to_user=user)
+            Relation(from_user=request.user, to_user=user).save()
             messages.success(request, 'You just followed this user!', 'success')
         return redirect('account:profile', user.pk)
 
